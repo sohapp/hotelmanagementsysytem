@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Table</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #3498db; /* Background color */
+      background-image: url(img/room.jpeg);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    #table-container {
+      background-color: #fff; /* Container background color */
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    th, td {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    .button-container {
+      margin-top: 20px;
+    }
+
+    .button, .approve-button, .disapprove-button {
+      background-color: #3498db; /* Button color */
+      color: #fff;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 4px;
+      margin-right: 10px;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .approve-button {
+      background-color: #2ecc71; /* Approve button color */
+    }
+
+    .disapprove-button {
+      background-color: #e74c3c; /* Disapprove button color */
+    }
+  </style>
+</head>
+<body>
+
+  <div id="table-container">
+    <h2>task schedules</h2>
+    <table id="data-table">
+      <thead>
+        <tr>
+          <th>assigned staff</th>
+          <th>room number</th>
+          <th>floor number</th>
+          <th>task name</th>
+          <th>assigned date</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>ahmad butt</td>
+          <td>3</td>
+          <td>1</td>
+          <td>room cleaning</td>
+          <td>1-1-14</td>
+          <td><button class="delete-button" >Delete</button></td>
+        </tr>
+        <tr>
+          <td>faraz khan</td>
+          <td>1</td>
+          <td>2</td>
+          <td>breakfast</td>
+          <td>3-1-14</td>
+          <td><button class="delete-button" >Delete</button></td>
+        </tr>
+        <!-- Add more rows as needed -->
+      </tbody>
+    </table>
+    <div class="button-container">
+      <button class="button" onclick="addEntry()">Edit entry</button>
+      <button class="button" onclick="goBack()">enter entry</button>
+    </div>
+  </div>
+
+  <script>
+    // Function to add a new entry
+    function addEntry() {
+      // Prompt for column values
+      const name = prompt('Enter Name:');
+      const age = prompt('Enter Age:');
+      const city = prompt('Enter City:');
+
+      // Add a new row to the table
+      const table = document.getElementById('data-table');
+      const newRow = table.querySelector('tbody').insertRow();
+
+      // Add cells with the entered values
+      const cell1 = newRow.insertCell(0);
+      const cell2 = newRow.insertCell(1);
+      const cell3 = newRow.insertCell(2);
+      const cell4 = newRow.insertCell(3);
+
+      cell1.innerHTML = name;
+      cell2.innerHTML = age;
+      cell3.innerHTML = city;
+      cell4.innerHTML = `
+        <button class="approve-button" onclick="approveEntry(this)">Approve</button>
+        <button class="disapprove-button" onclick="disapproveEntry(this)">Disapprove</button>
+      `;
+    }
+
+    // Function to approve an entry (you can customize this according to your needs)
+    function approveEntry(button) {
+      // Get the row index
+      const rowIndex = button.parentNode.parentNode.rowIndex;
+
+      // Get data from the row
+      const name = document.getElementById('data-table').rows[rowIndex].cells[0].textContent;
+      const age = document.getElementById('data-table').rows[rowIndex].cells[1].textContent;
+      const city = document.getElementById('data-table').rows[rowIndex].cells[2].textContent;
+
+      // For demonstration purposes, show an alert with the data
+      alert(`Approved:\nName: ${name}\nAge: ${age}\nCity: ${city}`);
+    }
+
+    // Function to disapprove an entry (you can customize this according to your needs)
+    function disapproveEntry(button) {
+      // Get the row index
+      const rowIndex = button.parentNode.parentNode.rowIndex;
+
+      // Get data from the row
+      const name = document.getElementById('data-table').rows[rowIndex].cells[0].textContent;
+      const age = document.getElementById('data-table').rows[rowIndex].cells[1].textContent;
+      const city = document.getElementById('data-table').rows[rowIndex].cells[2].textContent;
+
+      // For demonstration purposes, show an alert with the data
+      alert(`Disapproved:\nName: ${name}\nAge: ${age}\nCity: ${city}`);
+    }
+
+    // Function to go back (you can customize this according to your navigation needs)
+    function goBack() {
+      // For simplicity, this example just goes back to the previous page
+      window.history.back();
+    }
+  </script>
+
+</body>
+</html>

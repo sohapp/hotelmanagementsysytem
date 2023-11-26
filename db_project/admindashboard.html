@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu Page</title>
+  <style>
+    body {
+      
+      font-family: Arial, sans-serif;
+      background-color: #3498db; /* Background color */
+      background-image: url(img/room.jpeg);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    #menu-container {
+      background-color: #fff; /* Container background color */
+      padding: 20px;
+      border-radius: 11px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+
+    .menu-button {
+      color: black;
+      background-color: aquamarine;
+      padding: 40px; /* Adjusted padding for larger buttons */
+      border: 2px solid RED;
+      border-radius: 20px; /* Adjusted border-radius for larger buttons */
+      margin: 12px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 20px; /* Adjusted font size for larger buttons */
+      width: 300px; /* Adjusted width for wider buttons */
+      background-size: cover;
+    }
+
+   
+   
+  </style>
+</head>
+<body>
+
+  <div id="menu-container">
+    <h2>Menu</h2>
+    <a href="#" onclick="bookings()"  class="menu-button">View Bookings</a>
+    <a href="#" onclick="room()"   class="menu-button">Add or Edit room details</a>
+    <a href="#"  onclick="task()" class="menu-button">View and Assign task Schedules</a>
+    <a href="#" class="menu-button" onclick="inventory()">Manage inventory</a>
+    <a href="#" class="menu-button" onclick="edit()">Edit profile</a>
+    <a href="#" class="menu-button" onclick="admin()">Log out</a>
+  </div>
+    <script>
+      function room(){
+        window.location.href="roomdetails.html"
+      }
+      function edit(){
+        window.location.href="editprofile.html"
+      }
+       function bookings(){
+        window.location.href= "viewbookings.html"
+       }
+       function  task(){
+        window.location.href="viewtaskschedules.html"
+       }
+       function  inventory(){
+        window.location.href="inventory.html"
+       }
+       function  admin(){
+        window.location.href="adminhome.html"
+       }
+       
+    </script>
+</body>
+</html>
+
